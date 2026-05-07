@@ -35,18 +35,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Retry" type="Button" parent="." unique_id=121386935]
-offset_left = 200.0
+offset_left = 150.0
 offset_top = 460.0
-offset_right = 426.0
+offset_right = 453.0
 offset_bottom = 533.0
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 40
-text = "retry"
+text = "VOLVER"
 
 [node name="Menu" type="Button" parent="." unique_id=926522415]
-offset_left = 750.0
+offset_left = 766.0
 offset_top = 460.0
-offset_right = 946.0
+offset_right = 962.0
 offset_bottom = 533.0
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_fonts/font = ExtResource("2_8fo1c")

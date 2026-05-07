@@ -23,8 +23,8 @@ var attack = null
 # =========================
 # ❤️ VIDA
 # =========================
-var health = 30
-var health_max = 30
+var health = 100
+var health_max = 100
 var health_min = 0
 
 var is_dead = false
@@ -142,6 +142,9 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 	if play_animation:
 		animated_sprite.play("7 - death")
 		await animated_sprite.animation_finished
+	
+		# ❌ borrar checkpoint al morir del todo
+	Checkpoint.last_position = null
 
 	Global.last_scene_path = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -209,7 +212,7 @@ func get_damage():
 	return 0
 
 # =========================
-# 💥 KNOCKBACK (FUERTE RESTAURADO)
+# 💥 KNOCKBACK 
 # =========================
 func apply_knockback(source_position: Vector2):
 	if is_dead or is_dying:

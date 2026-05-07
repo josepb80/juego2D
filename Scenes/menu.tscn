@@ -77,7 +77,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_158mb")
-text = "PLAY"
+text = "JUGAR"
 
 [node name="Controls" type="Button" parent="VBoxContainer" unique_id=4233335]
 layout_mode = 2
@@ -99,7 +99,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_u4yt8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_158mb")
-text = "EXIT"
+text = "SALIR"
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=1917157451]
 position = Vector2(575.99994, 138.99998)
@@ -126,7 +126,7 @@ offset_bottom = 570.0
 theme_override_colors/font_color = Color(0.22272804, 0.52505225, 0.6553153, 1)
 theme_override_fonts/font = ExtResource("2_cayip")
 theme_override_font_sizes/font_size = 11
-text = "Created by"
+text = "CREADO   POR"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]

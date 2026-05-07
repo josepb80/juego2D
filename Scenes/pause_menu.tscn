@@ -224,7 +224,7 @@ offset_bottom = 59.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_1och7")
 theme_override_font_sizes/font_size = 82
-text = "PAUSE"
+text = "PAUSA"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1110280106]
 texture_filter = 1
@@ -252,7 +252,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_vmyb1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_myy0f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjs17")
-text = "resume"
+text = "VOLVER"
 
 [node name="ReturnMenu" type="Button" parent="VBoxContainer" unique_id=1902850632]
 modulate = Color(1, 1, 1, 0)
@@ -264,7 +264,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_vmyb1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_myy0f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjs17")
-text = "Back menu"
+text = "VOLVER AL MENU"
 
 [node name="Exit" type="Button" parent="VBoxContainer" unique_id=1053053097]
 modulate = Color(1, 1, 1, 0)
@@ -276,7 +276,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_vmyb1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_myy0f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjs17")
-text = "Exit Game"
+text = "SALIR DEL JUEGO"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1600164288]
 libraries/ = SubResource("AnimationLibrary_bpi0q")
