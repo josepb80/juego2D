@@ -11,7 +11,7 @@
   --color-red-light:  #e74c3c;
 
   --color-text:       #e8e0d0;
-  --color-text-muted: #7a7060;
+  --color-text-muted: #adadad;
 
   --font-display: 'Cinzel Decorative', serif;
   --font-body:    'Crimson Pro', Georgia, serif;
@@ -162,7 +162,7 @@ a:hover {
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: url('') center/cover no-repeat; /* ← Pon aquí tu imagen de fondo */
+  background: url('imagenes/gameplay.png') center/cover no-repeat; /* ← Pon aquí tu imagen de fondo */
   opacity: 0.25;
   z-index: 0;
 }
@@ -329,7 +329,7 @@ a:hover {
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 2rem 2.5rem;
+  padding: 2rem 1.5rem;
   transition: border-color var(--transition), transform var(--transition);
 }
 
