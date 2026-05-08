@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://7fwxakf1e4a1" path="res://Sprites/Player/6 - attack.png" id="6_gymyn"]
 [ext_resource type="Texture2D" uid="uid://dmgp83s50ohhj" path="res://Sprites/Player/7 - hit.png" id="7_pu2lt"]
 [ext_resource type="Texture2D" uid="uid://b5htisriehg4u" path="res://Sprites/Player/8 - death.png" id="8_ukyrk"]
-[ext_resource type="Texture2D" uid="uid://dwd02m4xo66td" path="res://UI/corazon.png" id="9_f1ek2"]
 [ext_resource type="PackedScene" uid="uid://b71tfe6yqepp4" path="res://Scenes/health_bar.tscn" id="10_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://ctryibxapay2m" path="res://UI/viento.png" id="11_gymyn"]
 [ext_resource type="PackedScene" uid="uid://mc68b24fdkwl" path="res://Scenes/pause_menu.tscn" id="12_pu2lt"]
+[ext_resource type="AudioStream" uid="uid://lkae3ca4gry5" path="res://Sonidos/PASOS EN MINECRAFT SOUND EFFECTS EFECTOS DE SONIDO.mp3" id="12_ukyrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
 atlas = ExtResource("2_8erm5")
@@ -471,57 +471,6 @@ trail_sections = 96
 trail_section_subdivisions = 96
 process_material = SubResource("ParticleProcessMaterial_fd4e3")
 
-[node name="HBoxContainer" type="Panel" parent="." unique_id=270632498]
-visible = false
-anchors_preset = -1
-anchor_left = 0.25100002
-anchor_top = -0.32900003
-anchor_right = 0.25100002
-anchor_bottom = -0.32900003
-offset_left = 143.0
-offset_top = -192.0
-offset_right = 281.848
-offset_bottom = -162.19202
-grow_horizontal = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=1867293668]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 140.0
-offset_bottom = 27.0
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=1810228093]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_f1ek2")
-expand_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=563270041]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_f1ek2")
-expand_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=430744546]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_f1ek2")
-expand_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=435636106]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_f1ek2")
-expand_mode = 2
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=254782335]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_f1ek2")
-expand_mode = 2
-
 [node name="PauseMenu" parent="." unique_id=1423104590 instance=ExtResource("12_pu2lt")]
 anchors_preset = 8
 anchor_left = 0.5
@@ -533,3 +482,7 @@ offset_top = -115.0
 offset_right = 426.0
 offset_bottom = 209.0
 scale = Vector2(0.5, 0.5)
+
+[node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
+stream = ExtResource("12_ukyrk")
+volume_db = 24.0

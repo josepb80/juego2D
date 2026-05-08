@@ -13,6 +13,7 @@ const JUMP_VELOCITY = -300
 @onready var dust = preload("res://Scenes/dust.tscn")
 @onready var deal_damage_zone = $DamageZone
 @onready var respawn_point = get_parent().get_node("RespawnPoint")
+@onready var footsteps = $sonido_caminar
 
 # =========================
 # 🧠 VARIABLES
@@ -37,8 +38,10 @@ var respawn_health_penalty = 10
 # =========================
 func _physics_process(delta):
 
-	# 💀 MUERTO → solo física (caer y quedarse quieto)
+	# 💀 MUERTO → solo física
 	if is_dead:
+		footsteps.stop()
+
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		else:
@@ -55,14 +58,27 @@ func _physics_process(delta):
 	 
 	isgrounded = is_on_floor()
 
+	# 🌍 gravedad
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# 🦘 salto
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+	# 🎮 movimiento
 	var direction = Input.get_axis("move_left", "move_right")
 
+	# =========================
+	# 👣 SONIDO PASOS
+	# =========================
+	if direction != 0 and is_on_floor():
+		if !footsteps.playing:
+			footsteps.play()
+	else:
+		footsteps.stop()
+
+	# Movimiento horizontal
 	if direction != 0:
 		velocity.x = direction * SPEED
 		animated_sprite.flip_h = direction < 0
@@ -70,10 +86,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	# ⚔️ ataque
 	if Input.is_action_just_pressed("left_mouse") and !attack:
 		attack = "5_attack"
 		handle_attack_animation(attack)
 
+	# 🎬 animaciones
 	if !attack:
 		if not is_on_floor():
 			if velocity.y < 0:
@@ -104,7 +122,7 @@ func take_damage(amount: int):
 
 	# 💀 MUERTE
 	if health <= health_min:
-		velocity = Vector2.ZERO  # 🔥 evita que el knockback arrastre la muerte
+		velocity = Vector2.ZERO
 		die_sequence()
 		return
 
@@ -131,6 +149,9 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 	is_dead = true
 	attack = null
 
+	# 👣 parar sonido pasos
+	footsteps.stop()
+
 	# 🪨 esperar suelo
 	if wait_for_floor:
 		while not is_on_floor():
@@ -143,7 +164,7 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 		animated_sprite.play("7 - death")
 		await animated_sprite.animation_finished
 	
-		# ❌ borrar checkpoint al morir del todo
+	# ❌ borrar checkpoint
 	Checkpoint.last_position = null
 
 	Global.last_scene_path = get_tree().current_scene.scene_file_path
@@ -161,6 +182,7 @@ func die(by_fall: bool):
 
 	health = max(health, health_min)
 
+	# 💀 GAME OVER
 	if health <= health_min:
 		die_sequence(false, false)
 		return
@@ -212,7 +234,7 @@ func get_damage():
 	return 0
 
 # =========================
-# 💥 KNOCKBACK 
+# 💥 KNOCKBACK
 # =========================
 func apply_knockback(source_position: Vector2):
 	if is_dead or is_dying:
