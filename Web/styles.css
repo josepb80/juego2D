@@ -97,14 +97,13 @@ a:hover {
   color: var(--color-gold);
 }
 
-/* ---------- BUTTONS ---------- */
+/* ---------- BUTTON ---------- */
 .btn {
   display: inline-block;
   padding: 0.75rem 2rem;
   border-radius: var(--radius);
   font-family: var(--font-body);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
+  font-size: 1.7rem;
   text-transform: uppercase;
   cursor: pointer;
   transition: all var(--transition);
@@ -125,18 +124,6 @@ a:hover {
   box-shadow: 0 6px 24px rgba(201, 168, 76, 0.3);
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: 2px solid var(--color-border);
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
-}
-
 .btn-large {
   padding: 1rem 3rem;
   font-size: 1.1rem;
@@ -151,12 +138,6 @@ a:hover {
   justify-content: center;
   text-align: center;
   padding: 8rem 2rem 4rem;
-
-  /* Fondo: sustituye esta URL por la imagen de tu juego */
-  background-image:
-    radial-gradient(ellipse at 50% 60%, rgba(192, 57, 43, 0.15) 0%, transparent 70%),
-    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #0a0a0f 0%, #12121a 100%);
 }
 
 .hero-bg-overlay {
@@ -230,7 +211,7 @@ a:hover {
 }
 
 .section-inner {
-  max-width: 760px;
+  max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 }
@@ -269,7 +250,7 @@ a:hover {
 }
 
 .features-inner {
-  max-width: 1100px;
+  max-width: 1750px;
   margin: 0 auto;
   text-align: center;
 }
@@ -315,8 +296,8 @@ a:hover {
 /* ---------- ENEMY LIST ---------- */
 .enemy-list {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
+  gap: 1.5rem;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 3rem;
 }
@@ -330,6 +311,8 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 2rem 1.5rem;
+  width: min(320px, 100%);
+  flex: 1 1 280px;
   transition: border-color var(--transition), transform var(--transition);
 }
 
@@ -342,39 +325,19 @@ a:hover {
   font-size: 3rem;
 }
 
+.enemy-avatar img {
+  width: 300px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 2px solid var(--color-border);
+}
+
 .enemy-card span {
   font-family: var(--font-display);
   font-size: 0.85rem;
   color: var(--color-text-muted);
   letter-spacing: 0.05em;
-}
-
-/* ---------- CTA ---------- */
-.cta-section {
-  padding: 7rem 2rem;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at center, rgba(192, 57, 43, 0.12) 0%, transparent 70%),
-    var(--color-bg);
-  border-top: 1px solid var(--color-border);
-}
-
-.cta-inner {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.cta-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  color: var(--color-gold-light);
-  margin-bottom: 1rem;
-}
-
-.cta-sub {
-  color: var(--color-text-muted);
-  font-style: italic;
-  margin-bottom: 2.5rem;
 }
 
 /* ---------- FOOTER ---------- */
