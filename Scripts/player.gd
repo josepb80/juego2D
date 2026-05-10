@@ -13,15 +13,21 @@ const JUMP_VELOCITY = -300
 @onready var dust = preload("res://Scenes/dust.tscn")
 @onready var deal_damage_zone = $DamageZone
 @onready var respawn_point = get_parent().get_node("RespawnPoint")
-@onready var footsteps = $sonido_caminar
 @onready var light = $PointLightPlayer
+
+# SONIDOS
+@onready var footsteps = $sonido_caminar
+@onready var sonido_saltar = $sonido_saltar
+@onready var sonido_caida = $sonido_caida
+@onready var sonido_muerte = $sonido_muerte
+@onready var sonido_daño = $sonido_daño
+@onready var sonido_espada = $sonido_espada
 
 # =========================
 # 🧠 VARIABLES
 # =========================
 var isgrounded = true
 var attack = null
-
 
 # =========================
 # ❤️ VIDA
@@ -46,21 +52,20 @@ func _physics_process(delta):
 	# 💀 MUERTO → solo física
 	if is_dead:
 		footsteps.stop()
-
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		else:
 			velocity = Vector2.ZERO
-		
 		move_and_slide()
 		return
 
-	# 🌫️ polvo al aterrizar
+	# 🌫️ polvo + sonido al aterrizar
 	if isgrounded == false and is_on_floor() == true:
+		sonido_caida.play()
 		var instance = dust.instantiate()
 		instance.global_position = $Marker2D.global_position
 		get_parent().add_child(instance)
-	 
+
 	isgrounded = is_on_floor()
 
 	# 🌍 gravedad
@@ -70,6 +75,7 @@ func _physics_process(delta):
 	# 🦘 salto
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		sonido_saltar.play()
 
 	# 🎮 movimiento
 	var direction = Input.get_axis("move_left", "move_right")
@@ -94,6 +100,7 @@ func _physics_process(delta):
 	# ⚔️ ataque
 	if Input.is_action_just_pressed("left_mouse") and !attack:
 		attack = "5_attack"
+		sonido_espada.play()
 		handle_attack_animation(attack)
 
 	# 🎬 animaciones
@@ -112,7 +119,7 @@ func _physics_process(delta):
 			else:
 				if animated_sprite.animation != "1 - idle":
 					animated_sprite.play("1 - idle")
-	
+
 	# 💡 CONTROL DE LUZ
 	if Input.is_action_just_pressed("light_button"):
 		light.visible = !light.visible
@@ -125,7 +132,7 @@ func _physics_process(delta):
 func take_damage(amount: int):
 	if invulnerable or is_dead or is_dying:
 		return
-		
+
 	health -= amount
 	health = clamp(health, health_min, health_max)
 
@@ -139,11 +146,11 @@ func take_damage(amount: int):
 	attack = "hit"
 	invulnerable = true
 
+	sonido_daño.play()
 	animated_sprite.play("6 - hit")
 	velocity = Vector2.ZERO
 
 	await get_tree().create_timer(0.3).timeout
-
 	attack = null
 	start_invulnerability()
 
@@ -170,9 +177,10 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 
 	# 🎬 animación muerte
 	if play_animation:
+		sonido_muerte.play()
 		animated_sprite.play("7 - death")
 		await animated_sprite.animation_finished
-	
+
 	# ❌ borrar checkpoint
 	Checkpoint.last_position = null
 
@@ -204,7 +212,6 @@ func die(by_fall: bool):
 		global_position = respawn_point.global_position
 
 	velocity = Vector2.ZERO
-
 	is_dead = false
 
 	start_invulnerability()
@@ -229,10 +236,10 @@ func handle_attack_animation(attack):
 func toggle_damage_collisions(attack):
 	var damage_zone_collision = deal_damage_zone.get_node("CollisionShape2D")
 	var wait_time: float
-	
+
 	if attack == "5_attack":
 		wait_time = 0.5
-		
+
 	damage_zone_collision.disabled = false
 	await get_tree().create_timer(wait_time).timeout
 	damage_zone_collision.disabled = true
@@ -250,6 +257,5 @@ func apply_knockback(source_position: Vector2):
 		return
 
 	var knockback_direction = -1 if source_position.x > global_position.x else 1
-	
 	velocity.x = knockback_direction * 500
 	velocity.y = -250

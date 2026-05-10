@@ -499,12 +499,22 @@ offset_right = 426.0
 offset_bottom = 209.0
 scale = Vector2(0.5, 0.5)
 
-[node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
-stream = ExtResource("12_ukyrk")
-volume_db = 24.0
-
 [node name="PointLightPlayer" type="PointLight2D" parent="." unique_id=658053208]
 scale = Vector2(0.04, 0.04)
 energy = 0.5
 texture = SubResource("GradientTexture2D_pu2lt")
 texture_scale = 5.0
+
+[node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
+stream = ExtResource("12_ukyrk")
+volume_db = 24.0
+
+[node name="sonido_saltar" type="AudioStreamPlayer2D" parent="." unique_id=1365383613]
+
+[node name="sonido_caida" type="AudioStreamPlayer2D" parent="." unique_id=638535830]
+
+[node name="sonido_muerte" type="AudioStreamPlayer2D" parent="." unique_id=1306348154]
+
+[node name="sonido_daño" type="AudioStreamPlayer2D" parent="." unique_id=1383540008]
+
+[node name="sonido_espada" type="AudioStreamPlayer2D" parent="." unique_id=639228211]
