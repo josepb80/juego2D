@@ -1,7 +1,6 @@
 extends Control
 
 func _ready():
-	# Empieza invisible y sin pausar nada
 	visible = false
 
 func resume():

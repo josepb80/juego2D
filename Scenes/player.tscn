@@ -419,6 +419,18 @@ scale_min = 0.049999997
 scale_max = 0.049999997
 alpha_curve = SubResource("CurveTexture_r1ead")
 
+[sub_resource type="Gradient" id="Gradient_78ryv"]
+offsets = PackedFloat32Array(0, 0.6807229)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pu2lt"]
+gradient = SubResource("Gradient_78ryv")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=779849852 groups=["Player"]]
 collision_mask = 6
 slide_on_ceiling = false
@@ -439,6 +451,8 @@ animation = &"7 - death"
 position = Vector2(2, 12)
 
 [node name="HealthBar" parent="." unique_id=2086820887 instance=ExtResource("10_tx1dd")]
+light_mask = 2
+visibility_layer = 2
 offset_left = 192.0
 offset_top = -190.0
 offset_right = 280.0
@@ -472,6 +486,8 @@ trail_section_subdivisions = 96
 process_material = SubResource("ParticleProcessMaterial_fd4e3")
 
 [node name="PauseMenu" parent="." unique_id=1423104590 instance=ExtResource("12_pu2lt")]
+light_mask = 4
+visibility_layer = 4
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -486,3 +502,9 @@ scale = Vector2(0.5, 0.5)
 [node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
 stream = ExtResource("12_ukyrk")
 volume_db = 24.0
+
+[node name="PointLightPlayer" type="PointLight2D" parent="." unique_id=658053208]
+scale = Vector2(0.04, 0.04)
+energy = 0.5
+texture = SubResource("GradientTexture2D_pu2lt")
+texture_scale = 5.0

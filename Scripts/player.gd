@@ -14,12 +14,14 @@ const JUMP_VELOCITY = -300
 @onready var deal_damage_zone = $DamageZone
 @onready var respawn_point = get_parent().get_node("RespawnPoint")
 @onready var footsteps = $sonido_caminar
+@onready var light = $PointLightPlayer
 
 # =========================
 # 🧠 VARIABLES
 # =========================
 var isgrounded = true
 var attack = null
+
 
 # =========================
 # ❤️ VIDA
@@ -32,6 +34,9 @@ var is_dead = false
 var is_dying = false
 var invulnerable = false
 var respawn_health_penalty = 10
+
+func _ready():
+	light.visible = false
 
 # =========================
 # 🔄 LOOP PRINCIPAL
@@ -107,6 +112,10 @@ func _physics_process(delta):
 			else:
 				if animated_sprite.animation != "1 - idle":
 					animated_sprite.play("1 - idle")
+	
+	# 💡 CONTROL DE LUZ
+	if Input.is_action_just_pressed("light_button"):
+		light.visible = !light.visible
 
 	move_and_slide()
 

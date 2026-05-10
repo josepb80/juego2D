@@ -139,6 +139,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_up6xc"]
 gradient = SubResource("Gradient_78ryv")
+width = 300
+height = 300
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
@@ -159,6 +161,7 @@ animation = &"fire"
 
 [node name="PointLightOrange" type="PointLight2D" parent="." unique_id=1152282036]
 position = Vector2(0, -1)
+scale = Vector2(0.25, 0.25)
 color = Color(1, 0.6156863, 0.21960784, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_up6xc")
