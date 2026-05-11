@@ -24,6 +24,9 @@ var invulnerable = false   # i-frames tras recibir daño
 
 @export var invulnerability_time = 0.5
 
+# Sonidos
+@onready var sonido_araña = $sonido_araña
+
 
 # =========================
 # 🟢 INICIO
@@ -146,3 +149,8 @@ func die():
 	await $AnimatedSprite2D.animation_finished
 
 	queue_free()
+
+
+func _on_timer_sonido_timeout() -> void:
+	if !dead:
+		sonido_araña.play()
