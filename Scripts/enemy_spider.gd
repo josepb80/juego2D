@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 # =========================
@@ -24,9 +23,12 @@ var invulnerable = false   # i-frames tras recibir daño
 
 @export var invulnerability_time = 0.5
 
-# Sonidos
-@onready var sonido_araña = $sonido_araña
-
+# =========================
+# 🔊 SONIDOS
+# =========================
+@onready var sonido_araña = $sonido_araña       # Sonido periódico de araña
+@onready var sonido_pasos = $sonido_pasos       # Sonido de pasos de araña
+@onready var TimerSonido = $TimerSonido         # Timer para sonido de araña
 
 # =========================
 # 🟢 INICIO
@@ -34,6 +36,10 @@ var invulnerable = false   # i-frames tras recibir daño
 func _ready():
 	# Animación inicial del enemigo
 	$AnimatedSprite2D.play("1 - walk")
+	
+	# Randomiza el tiempo del timer para que no todas las arañas suenen al mismo tiempo
+	TimerSonido.wait_time = randf_range(1.5, 3.5)
+	TimerSonido.start()
 
 
 # =========================
@@ -46,6 +52,7 @@ func _physics_process(delta):
 	# =========================
 	if dead:
 		velocity = Vector2.ZERO
+		sonido_pasos.stop()  # detener sonido de pasos al morir
 		return
 
 	# =========================
@@ -53,6 +60,16 @@ func _physics_process(delta):
 	# =========================
 	velocity.x = speed * direction
 	move_and_slide()
+
+	# =========================
+	# 🎵 SONIDO DE PASOS
+	# =========================
+	if !dead:
+		if velocity.x != 0:
+			if !sonido_pasos.playing:
+				sonido_pasos.play()
+		else:
+			sonido_pasos.stop()
 
 	# =========================
 	# 💥 ATAQUE AL PLAYER POR CONTACTO
@@ -133,6 +150,7 @@ func take_damage(damage):
 func die():
 	dead = true
 	velocity = Vector2.ZERO
+	sonido_pasos.stop()  # parar sonido de pasos
 
 	print("Enemigo muerto")
 
@@ -151,6 +169,9 @@ func die():
 	queue_free()
 
 
+# =========================
+# 🔊 SONIDO PERIÓDICO DE ARAÑA
+# =========================
 func _on_timer_sonido_timeout() -> void:
 	if !dead:
 		sonido_araña.play()

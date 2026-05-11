@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bny6yd6a1p8wy" path="res://Sprites/Enemies/Spider/2 - dead.png" id="3_13mbg"]
 [ext_resource type="Texture2D" uid="uid://c27xkb34c7dwj" path="res://Sprites/Enemies/Spider/3  -  hit.png" id="4_50w2t"]
 [ext_resource type="AudioStream" uid="uid://t0fh5gepl1bt" path="res://Sonidos/sonido_araña.mp3" id="6_13mbg"]
+[ext_resource type="AudioStream" uid="uid://i5kfdfbaxevl" path="res://Sonidos/pasos_araña.mp3" id="7_50w2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esujr"]
 size = Vector2(44, 26)
@@ -147,6 +148,9 @@ stream = ExtResource("6_13mbg")
 [node name="TimerSonido" type="Timer" parent="." unique_id=1921828471]
 wait_time = 2.5
 autostart = true
+
+[node name="sonido_pasos" type="AudioStreamPlayer2D" parent="." unique_id=940030263]
+stream = ExtResource("7_50w2t")
 
 [connection signal="area_entered" from="SetaHitbox" to="." method="_on_seta_hitbox_area_entered"]
 [connection signal="timeout" from="TimerSonido" to="." method="_on_timer_sonido_timeout"]
