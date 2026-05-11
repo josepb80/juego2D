@@ -37,8 +37,10 @@ version_control/autoload_on_startup=true
 folder_colors={
 "res://Scenes/": "red",
 "res://Scripts/": "green",
+"res://Sonidos/": "purple",
 "res://Sprites/": "blue",
-"res://UI/": "yellow"
+"res://UI/": "yellow",
+"res://Web/": "blue"
 }
 
 [input]

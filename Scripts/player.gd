@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 # =========================
-# ⚙️ CONSTANTES
+# CONSTANTES
 # =========================
 const SPEED = 155
 const JUMP_VELOCITY = -300
 
 # =========================
-# 🔗 REFERENCIAS
+# REFERENCIAS
 # =========================
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var dust = preload("res://Scenes/dust.tscn")
@@ -24,15 +24,15 @@ const JUMP_VELOCITY = -300
 @onready var sonido_espada = $sonido_espada
 
 # =========================
-# 🧠 VARIABLES
+# VARIABLES
 # =========================
 var isgrounded = true
 var attack = null
 
 # =========================
-# ❤️ VIDA
+#  VIDA
 # =========================
-var health = 100
+var health = 20
 var health_max = 100
 var health_min = 0
 
@@ -45,7 +45,7 @@ func _ready():
 	light.visible = false
 
 # =========================
-# 🔄 LOOP PRINCIPAL
+# LOOP PRINCIPAL
 # =========================
 func _physics_process(delta):
 
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	# 🌫️ polvo + sonido al aterrizar
+	# dust + sonido al aterrizar
 	if isgrounded == false and is_on_floor() == true:
 		sonido_caida.play()
 		var instance = dust.instantiate()
@@ -68,11 +68,11 @@ func _physics_process(delta):
 
 	isgrounded = is_on_floor()
 
-	# 🌍 gravedad
+	# gravedad de salto
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# 🦘 salto
+	# accion salto
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		sonido_saltar.play()
@@ -80,9 +80,7 @@ func _physics_process(delta):
 	# 🎮 movimiento
 	var direction = Input.get_axis("move_left", "move_right")
 
-	# =========================
-	# 👣 SONIDO PASOS
-	# =========================
+	#  SONIDO PASOS
 	if direction != 0 and is_on_floor():
 		if !footsteps.playing:
 			footsteps.play()
@@ -97,7 +95,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	# ⚔️ ataque
+	# ataque + sonido
 	if Input.is_action_just_pressed("left_mouse") and !attack:
 		attack = "5_attack"
 		sonido_espada.play()
@@ -120,14 +118,14 @@ func _physics_process(delta):
 				if animated_sprite.animation != "1 - idle":
 					animated_sprite.play("1 - idle")
 
-	# 💡 CONTROL DE LUZ
+	# CONTROL DE LUZ
 	if Input.is_action_just_pressed("light_button"):
 		light.visible = !light.visible
 
 	move_and_slide()
 
 # =========================
-# ❤️ DAÑO
+#  DAÑO
 # =========================
 func take_damage(amount: int):
 	if invulnerable or is_dead or is_dying:
@@ -136,13 +134,13 @@ func take_damage(amount: int):
 	health -= amount
 	health = clamp(health, health_min, health_max)
 
-	# 💀 MUERTE
+	# MUERTE
 	if health <= health_min:
 		velocity = Vector2.ZERO
 		die_sequence()
 		return
 
-	# 🩸 HIT NORMAL
+	# HIT
 	attack = "hit"
 	invulnerable = true
 
@@ -155,7 +153,7 @@ func take_damage(amount: int):
 	start_invulnerability()
 
 # =========================
-# 💀 MUERTE
+# MUERTE
 # =========================
 func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 	if is_dying:
@@ -165,30 +163,30 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 	is_dead = true
 	attack = null
 
-	# 👣 parar sonido pasos
+	# parar los sonido de los pasos cuando no camine
 	footsteps.stop()
 
-	# 🪨 esperar suelo
+	# esperar a llegar al suelo para morir
 	if wait_for_floor:
 		while not is_on_floor():
 			await get_tree().physics_frame
 
 	velocity = Vector2.ZERO
 
-	# 🎬 animación muerte
+	# animación de muerte + sonido
 	if play_animation:
 		sonido_muerte.play()
 		animated_sprite.play("7 - death")
 		await animated_sprite.animation_finished
 
-	# ❌ borrar checkpoint
+	# borrar checkpoint al reiniciar nivel
 	Checkpoint.last_position = null
 
 	Global.last_scene_path = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 # =========================
-# 🔁 RESPAWN
+#  RESPAWN
 # =========================
 func die(by_fall: bool):
 	if is_dead:
@@ -199,7 +197,7 @@ func die(by_fall: bool):
 
 	health = max(health, health_min)
 
-	# 💀 GAME OVER
+	# GAME OVER
 	if health <= health_min:
 		die_sequence(false, false)
 		return
@@ -224,7 +222,7 @@ func start_invulnerability():
 	invulnerable = false
 
 # =========================
-# ⚔️ ATAQUE
+# ATAQUE
 # =========================
 func handle_attack_animation(attack):
 	if attack:
@@ -250,12 +248,13 @@ func get_damage():
 	return 0
 
 # =========================
-# 💥 KNOCKBACK
+#KNOCKBACK
 # =========================
+# Quitar nockback a la hora de morir
 func apply_knockback(source_position: Vector2):
 	if is_dead or is_dying:
 		return
-
+# Knockback normal
 	var knockback_direction = -1 if source_position.x > global_position.x else 1
 	velocity.x = knockback_direction * 500
 	velocity.y = -250

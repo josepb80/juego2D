@@ -11,7 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://b71tfe6yqepp4" path="res://Scenes/health_bar.tscn" id="10_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://ctryibxapay2m" path="res://UI/viento.png" id="11_gymyn"]
 [ext_resource type="PackedScene" uid="uid://mc68b24fdkwl" path="res://Scenes/pause_menu.tscn" id="12_pu2lt"]
-[ext_resource type="AudioStream" uid="uid://lkae3ca4gry5" path="res://Sonidos/PASOS EN MINECRAFT SOUND EFFECTS EFECTOS DE SONIDO.mp3" id="12_ukyrk"]
+[ext_resource type="AudioStream" uid="uid://c0h3a3w5vwoxl" path="res://Sonidos/caminar.wav" id="12_qqcod"]
+[ext_resource type="AudioStream" uid="uid://bygswekr0kahk" path="res://Sonidos/saltar.mp3" id="13_ukyrk"]
+[ext_resource type="AudioStream" uid="uid://ctrg0qn1a1gya" path="res://Sonidos/caida.mp3" id="14_7dp3o"]
+[ext_resource type="AudioStream" uid="uid://cf7stcludglxw" path="res://Sonidos/muerte.mp3" id="15_h4iuc"]
+[ext_resource type="AudioStream" uid="uid://cue7ttpjxs88c" path="res://Sonidos/hit.mp3" id="16_fd4e3"]
+[ext_resource type="AudioStream" uid="uid://1dmyerdjbha" path="res://Sonidos/espada.mp3" id="17_qqcod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
 atlas = ExtResource("2_8erm5")
@@ -506,15 +511,20 @@ texture = SubResource("GradientTexture2D_pu2lt")
 texture_scale = 5.0
 
 [node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
-stream = ExtResource("12_ukyrk")
+stream = ExtResource("12_qqcod")
 volume_db = 24.0
 
 [node name="sonido_saltar" type="AudioStreamPlayer2D" parent="." unique_id=1365383613]
+stream = ExtResource("13_ukyrk")
 
 [node name="sonido_caida" type="AudioStreamPlayer2D" parent="." unique_id=638535830]
+stream = ExtResource("14_7dp3o")
 
 [node name="sonido_muerte" type="AudioStreamPlayer2D" parent="." unique_id=1306348154]
+stream = ExtResource("15_h4iuc")
 
 [node name="sonido_daño" type="AudioStreamPlayer2D" parent="." unique_id=1383540008]
+stream = ExtResource("16_fd4e3")
 
 [node name="sonido_espada" type="AudioStreamPlayer2D" parent="." unique_id=639228211]
+stream = ExtResource("17_qqcod")
