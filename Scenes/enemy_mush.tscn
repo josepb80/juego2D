@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b71tfe6yqepp4" path="res://Scenes/health_bar.tscn" id="4_287tu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij6vw"]
-radius = 19.026299
+radius = 19.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_auwsv"]
 atlas = ExtResource("2_0830c")

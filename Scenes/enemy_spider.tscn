@@ -144,6 +144,9 @@ shape = SubResource("RectangleShape2D_13mbg")
 
 [node name="sonido_araña" type="AudioStreamPlayer2D" parent="." unique_id=2109429530]
 stream = ExtResource("6_13mbg")
+volume_db = -15.0
+max_distance = 600.0
+attenuation = 2.0
 
 [node name="TimerSonido" type="Timer" parent="." unique_id=1921828471]
 wait_time = 2.5
@@ -151,6 +154,9 @@ autostart = true
 
 [node name="sonido_pasos" type="AudioStreamPlayer2D" parent="." unique_id=940030263]
 stream = ExtResource("7_50w2t")
+volume_db = -10.0
+max_distance = 600.0
+attenuation = 2.0
 
 [connection signal="area_entered" from="SetaHitbox" to="." method="_on_seta_hitbox_area_entered"]
 [connection signal="timeout" from="TimerSonido" to="." method="_on_timer_sonido_timeout"]

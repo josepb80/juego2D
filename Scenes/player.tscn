@@ -512,19 +512,24 @@ texture_scale = 5.0
 
 [node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
 stream = ExtResource("12_qqcod")
-volume_db = 24.0
+volume_db = -8.0
 
 [node name="sonido_saltar" type="AudioStreamPlayer2D" parent="." unique_id=1365383613]
 stream = ExtResource("13_ukyrk")
+volume_db = -8.0
 
 [node name="sonido_caida" type="AudioStreamPlayer2D" parent="." unique_id=638535830]
 stream = ExtResource("14_7dp3o")
+volume_db = -8.0
 
 [node name="sonido_muerte" type="AudioStreamPlayer2D" parent="." unique_id=1306348154]
 stream = ExtResource("15_h4iuc")
+volume_db = -8.0
 
 [node name="sonido_daño" type="AudioStreamPlayer2D" parent="." unique_id=1383540008]
 stream = ExtResource("16_fd4e3")
+volume_db = -8.0
 
 [node name="sonido_espada" type="AudioStreamPlayer2D" parent="." unique_id=639228211]
 stream = ExtResource("17_qqcod")
+volume_db = -8.0

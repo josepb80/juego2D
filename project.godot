@@ -15,6 +15,10 @@ run/main_scene="uid://ctgiyewsbtmf2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cy1o6tnlp2y7d"
 
+[audio]
+
+general/2d_panning_strength=1.0
+
 [autoload]
 
 Global="*uid://crjmxlbxvp0b2"
