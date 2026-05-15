@@ -15,9 +15,9 @@ const JUMP_VELOCITY = -300
 @onready var respawn_point = get_parent().get_node("RespawnPoint")
 @onready var light = $PointLightPlayer
 
-# =========================
+# =================
 # SONIDOS
-# =========================
+# =================
 @onready var footsteps = $sonido_caminar
 @onready var sonido_saltar = $sonido_saltar
 @onready var sonido_caida = $sonido_caida
@@ -34,7 +34,7 @@ var attack = null
 # =========================
 # VIDA
 # =========================
-var health = 20
+var health = 100
 var health_max = 100
 var health_min = 0
 

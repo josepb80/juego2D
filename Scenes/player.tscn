@@ -512,7 +512,7 @@ texture_scale = 5.0
 
 [node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
 stream = ExtResource("12_qqcod")
-volume_db = -8.0
+volume_db = -5.0
 
 [node name="sonido_saltar" type="AudioStreamPlayer2D" parent="." unique_id=1365383613]
 stream = ExtResource("13_ukyrk")
