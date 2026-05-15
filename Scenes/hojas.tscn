@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g4qaut5mfxkd"]
 
-[ext_resource type="Texture2D" uid="uid://r1g6ghuo68u8" path="res://Captura_de_pantalla_de_2026-05-13_12-12-07-removebg-preview.png" id="1_xtpf6"]
+[ext_resource type="Texture2D" uid="uid://pbk8xjfxn82" path="res://UI/hoja.png" id="1_xtpf6"]
 
 [sub_resource type="Curve" id="Curve_yt717"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
@@ -15,14 +15,15 @@ point_count = 2
 [node name="CPUParticles2D" type="CPUParticles2D" unique_id=40490927]
 modulate = Color(0.69135684, 0.6913568, 0.69135684, 1)
 self_modulate = Color(0.8474744, 0.84747446, 0.84747446, 1)
-amount = 50
+scale = Vector2(5.1741204, 0.04218943)
+amount = 20
 texture = ExtResource("1_xtpf6")
 emission_shape = 3
 emission_rect_extents = Vector2(10, 1)
 gravity = Vector2(200, 980)
-initial_velocity_max = 2.0
+initial_velocity_max = 1000.0
 angular_velocity_max = 2.0
 angular_velocity_curve = SubResource("Curve_yt717")
-radial_accel_max = 2.0
+radial_accel_max = 4.55
 radial_accel_curve = SubResource("Curve_6h1vi")
 damping_max = 2.0
