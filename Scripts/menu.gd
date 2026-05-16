@@ -13,7 +13,7 @@ func _on_play_pressed() -> void:
 # =========================
 func _on_controls_pressed() -> void:
 	# Abre la escena del tutorial o pantalla de controles
-	get_tree().change_scene_to_file("res://Scenes/tutorial.tscn")
+	get_tree().change_scene_to_file("res://Scenes/tutorial.scn")
 
 
 # =========================
