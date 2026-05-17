@@ -46,7 +46,10 @@ var respawn_health_penalty = 10
 
 func _ready():
 	light.visible = false
-
+	
+	Global.jugador_referencia = self
+	if not Global.enemigo_muerto.is_connected(_on_enemigo_muerto_global):
+		Global.enemigo_muerto.connect(_on_enemigo_muerto_global)
 
 # =========================
 # LOOP PRINCIPAL
@@ -350,3 +353,18 @@ func apply_knockback(source_position: Vector2):
 	velocity.x = knockback_direction * 500
 
 	velocity.y = -250
+
+func _on_enemigo_muerto_global():
+	heal_percentage(10.0)
+
+# Función para curar el 10% de la vida máxima sin pasarse del límite
+func heal_percentage(amount_percent: float):
+	if is_dead or is_dying:
+		return
+		
+	var heal_amount = health_max * (amount_percent / 100.0)
+	health += heal_amount
+	
+	# Evitamos superar el máximo de vida
+	health = clamp(health, health_min, health_max)
+	print("¡Jugador curado! Vida actual: ", health)

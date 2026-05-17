@@ -26,6 +26,7 @@ Checkpoint="*uid://dmuv6b1o3cy1f"
 
 [display]
 
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://dacjxvd054fiu"
 
 [dotnet]

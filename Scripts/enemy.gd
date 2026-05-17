@@ -24,14 +24,12 @@ var invulnerable = false   # i-frames tras recibir daño
 
 @export var invulnerability_time = 0.5
 
-
 # =========================
 # 🟢 INICIO
 # =========================
 func _ready():
 	# Animación inicial del enemigo
 	$AnimatedSprite2D.play("1 - walk")
-
 
 # =========================
 # 🔄 LOOP PRINCIPAL
@@ -132,6 +130,9 @@ func die():
 	velocity = Vector2.ZERO
 
 	print("Enemigo muerto")
+
+	# 📢 AVISO AL GLOBAL: Emitimos la señal antes de destruir al enemigo
+	Global.enemigo_muerto.emit()
 
 	# Desactiva colisiones para evitar bugs
 	if has_node("CollisionShape2D"):
