@@ -2,6 +2,127 @@
 
 [ext_resource type="Script" uid="uid://71qsvmqu3v61" path="res://Scripts/game_over.gd" id="1_8fo1c"]
 [ext_resource type="FontFile" uid="uid://sohciwor7xii" path="res://UI/Daydream DEMO.otf" id="2_8fo1c"]
+[ext_resource type="Texture2D" uid="uid://b5htisriehg4u" path="res://Sprites/Player/8 - death.png" id="3_ek8ke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fo1c"]
+bg_color = Color(0.47441393, 0.26380277, 0.12762576, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3ryr"]
+bg_color = Color(0.6976257, 0.4041942, 0.2239615, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek8ke"]
+bg_color = Color(0.7909972, 0.4743663, 0.28063822, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoghk"]
+bg_color = Color(0.4745098, 0.2627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjluv"]
+bg_color = Color(0.69803923, 0.40392157, 0.22352941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14u15"]
+bg_color = Color(0.7921569, 0.4745098, 0.28235295, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoghk"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(0, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14u15"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(240, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3ryr"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(480, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjluv"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(720, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjtdd"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(960, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uylih"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(1200, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3817r"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(1440, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mitgx"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(1680, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2es"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(1920, 0, 240, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asocn"]
+atlas = ExtResource("3_ek8ke")
+region = Rect2(2160, 0, 240, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61f6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoghk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14u15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3ryr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjluv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjtdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uylih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3817r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mitgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asocn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GameOver" type="CanvasLayer" unique_id=1860958336]
 script = ExtResource("1_8fo1c")
@@ -41,6 +162,9 @@ offset_right = 453.0
 offset_bottom = 533.0
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fo1c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j3ryr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ek8ke")
 text = "VOLVER"
 
 [node name="Menu" type="Button" parent="." unique_id=926522415]
@@ -51,7 +175,16 @@ offset_bottom = 533.0
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_fonts/font = ExtResource("2_8fo1c")
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoghk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rjluv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_14u15")
 text = "Menu"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419896213]
+texture_filter = 1
+position = Vector2(532, 335)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_61f6c")
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
