@@ -1,8 +1,13 @@
 extends Node
 
 signal enemigo_muerto
-var jugador_referencia = null
 
+signal contador_actualizado(bajas)
+signal caidas_actualizado(caidas)
+
+var enemigos_derrotados: int = 0
+var jugador_referencia = null
+var caidas_totales: int = 0
 var playerBody: CharacterBody2D 
 var playerDamageZone: Area2D
 var playerDamageAmount: int = 15

@@ -17,6 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://cf7stcludglxw" path="res://Sonidos/muerte.mp3" id="15_h4iuc"]
 [ext_resource type="AudioStream" uid="uid://cue7ttpjxs88c" path="res://Sonidos/hit.mp3" id="16_fd4e3"]
 [ext_resource type="AudioStream" uid="uid://1dmyerdjbha" path="res://Sonidos/espada.mp3" id="17_qqcod"]
+[ext_resource type="FontFile" uid="uid://sohciwor7xii" path="res://UI/Daydream DEMO.otf" id="18_fs7ks"]
+[ext_resource type="Script" uid="uid://bdmcmuqj22107" path="res://Scripts/bajas.gd" id="18_igrcy"]
+[ext_resource type="Script" uid="uid://5a7fgm1ygaue" path="res://Scenes/caídas.gd" id="20_l6n3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
 atlas = ExtResource("2_8erm5")
@@ -506,30 +509,58 @@ scale = Vector2(0.5, 0.5)
 
 [node name="PointLightPlayer" type="PointLight2D" parent="." unique_id=658053208]
 scale = Vector2(0.04, 0.04)
-energy = 0.5
+energy = 0.6
 texture = SubResource("GradientTexture2D_pu2lt")
-texture_scale = 5.0
+texture_scale = 6.0
 
-[node name="sonido_caminar" type="AudioStreamPlayer2D" parent="." unique_id=1941367660]
+[node name="Sonidos" type="Node2D" parent="." unique_id=1002617689]
+
+[node name="sonido_caminar" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1941367660]
 stream = ExtResource("12_qqcod")
 volume_db = -5.0
 
-[node name="sonido_saltar" type="AudioStreamPlayer2D" parent="." unique_id=1365383613]
+[node name="sonido_saltar" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1365383613]
 stream = ExtResource("13_ukyrk")
 volume_db = -8.0
 
-[node name="sonido_caida" type="AudioStreamPlayer2D" parent="." unique_id=638535830]
+[node name="sonido_caida" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=638535830]
 stream = ExtResource("14_7dp3o")
 volume_db = -8.0
 
-[node name="sonido_muerte" type="AudioStreamPlayer2D" parent="." unique_id=1306348154]
+[node name="sonido_muerte" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1306348154]
 stream = ExtResource("15_h4iuc")
 volume_db = -8.0
 
-[node name="sonido_daño" type="AudioStreamPlayer2D" parent="." unique_id=1383540008]
+[node name="sonido_daño" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1383540008]
 stream = ExtResource("16_fd4e3")
 volume_db = -8.0
 
-[node name="sonido_espada" type="AudioStreamPlayer2D" parent="." unique_id=639228211]
+[node name="sonido_espada" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=639228211]
 stream = ExtResource("17_qqcod")
 volume_db = -8.0
+
+[node name="Bajas" type="Label" parent="." unique_id=1405821979]
+light_mask = 2
+visibility_layer = 2
+texture_filter = 1
+offset_left = -285.0
+offset_top = -196.0
+offset_right = -218.0
+offset_bottom = -182.0
+theme_override_fonts/font = ExtResource("18_fs7ks")
+theme_override_font_sizes/font_size = 8
+text = "Bajas: "
+script = ExtResource("18_igrcy")
+
+[node name="Caídas" type="Label" parent="." unique_id=818595389]
+light_mask = 2
+visibility_layer = 2
+texture_filter = 1
+offset_left = -285.0
+offset_top = -182.0
+offset_right = -218.0
+offset_bottom = -168.0
+theme_override_fonts/font = ExtResource("18_fs7ks")
+theme_override_font_sizes/font_size = 8
+text = "Caidas: "
+script = ExtResource("20_l6n3p")

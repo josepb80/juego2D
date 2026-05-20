@@ -251,6 +251,9 @@ func die_sequence(wait_for_floor: bool = true, play_animation: bool = true):
 	# ❌ borrar checkpoint
 	Checkpoint.last_position = null
 
+	Global.enemigos_derrotados = 0
+	Global.caidas_totales = 0
+	
 	Global.last_scene_path = get_tree().current_scene.scene_file_path
 
 	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
@@ -266,7 +269,10 @@ func die(by_fall: bool):
 
 	if by_fall:
 		health -= respawn_health_penalty
-
+		
+		Global.caidas_totales += 1
+		Global.caidas_actualizado.emit(Global.caidas_totales)
+		
 	health = max(health, health_min)
 
 	# 💀 GAME OVER
@@ -356,6 +362,9 @@ func apply_knockback(source_position: Vector2):
 
 func _on_enemigo_muerto_global():
 	heal_percentage(10.0)
+	
+	Global.enemigos_derrotados += 1
+	Global.contador_actualizado.emit(Global.enemigos_derrotados)
 
 # Función para curar el 10% de la vida máxima sin pasarse del límite
 func heal_percentage(amount_percent: float):

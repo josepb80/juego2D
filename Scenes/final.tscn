@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://22we1wlxyy6v"]
+
+[ext_resource type="Script" uid="uid://by4fwnnq6o3k1" path="res://Scripts/final.gd" id="1_61mla"]
+[ext_resource type="Texture2D" uid="uid://d10l5hw5ic6pd" path="res://Sprites/Map/background/background_layer_1.png" id="1_adj38"]
+[ext_resource type="FontFile" uid="uid://sohciwor7xii" path="res://UI/Daydream DEMO.otf" id="1_trmy6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_61mla"]
+texture = ExtResource("1_adj38")
+modulate_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61mla"]
+bg_color = Color(0.4745098, 0.2627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgkft"]
+bg_color = Color(0.69803923, 0.40392157, 0.22352941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2yra"]
+bg_color = Color(0.7921569, 0.4745098, 0.28235295, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Final" type="Control" unique_id=1113213932]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61mla")
+
+[node name="Panel" type="Panel" parent="." unique_id=1627195153]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_61mla")
+
+[node name="Label" type="Label" parent="." unique_id=766513498]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -405.5
+offset_top = 88.0
+offset_right = 405.5
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_trmy6")
+theme_override_font_sizes/font_size = 65
+text = "continuara ..."
+
+[node name="Menu" type="Button" parent="." unique_id=2023172443]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = 43.5
+offset_right = 318.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_fonts/font = ExtResource("1_trmy6")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_61mla")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wgkft")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2yra")
+text = "Volver al menu"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

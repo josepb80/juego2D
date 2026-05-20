@@ -154,6 +154,8 @@ func die():
 
 	print("Enemigo muerto")
 
+	Global.enemigo_muerto.emit()
+
 	# Desactiva colisiones para evitar bugs
 	if has_node("CollisionShape2D"):
 		$CollisionShape2D.disabled = true

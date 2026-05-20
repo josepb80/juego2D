@@ -2,10 +2,10 @@ extends Area2D  # Área de colisión usada como portal o trigger de cambio de ni
 
 # Prefijo de las escenas de niveles (mapas)
 const FILE_BEGIN = "res://Scenes/map"
-
+const FINAL_SCENE = "res://Scenes/final.tscn"
 
 # =========================
-# 🟢 INICIO
+# INICIO
 # =========================
 func _ready():
 	# Reproduce la animación del portal (por ejemplo fuego o efecto visual)
@@ -29,4 +29,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		var next_level_path = FILE_BEGIN + str(next_level_number) + ".scn"
 
 		# Cambia a la siguiente escena
-		get_tree().change_scene_to_file(next_level_path)
+		if FileAccess.file_exists(next_level_path):
+			get_tree().change_scene_to_file(next_level_path)
+		else:
+			get_tree().change_scene_to_file(FINAL_SCENE)
