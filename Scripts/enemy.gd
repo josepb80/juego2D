@@ -31,6 +31,12 @@ var invulnerable = false   # i-frames tras recibir daño
 func _ready():
 	# Animación inicial del enemigo
 	$AnimatedSprite2D.play("1 - walk")
+	
+	sonido_seta.finished.connect(_on_sonido_seta_finished)
+	sonido_seta.play()
+
+func _on_sonido_seta_finished():
+		sonido_seta.play()
 
 # =========================
 # 🔄 LOOP PRINCIPAL

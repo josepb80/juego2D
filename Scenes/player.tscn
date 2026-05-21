@@ -549,10 +549,10 @@ offset_right = -218.0
 offset_bottom = -182.0
 theme_override_fonts/font = ExtResource("18_fs7ks")
 theme_override_font_sizes/font_size = 8
-text = "Bajas: "
+text = "Bajas "
 script = ExtResource("18_igrcy")
 
-[node name="Caídas" type="Label" parent="." unique_id=818595389]
+[node name="Caidas" type="Label" parent="." unique_id=818595389]
 light_mask = 2
 visibility_layer = 2
 texture_filter = 1
@@ -562,5 +562,5 @@ offset_right = -218.0
 offset_bottom = -168.0
 theme_override_fonts/font = ExtResource("18_fs7ks")
 theme_override_font_sizes/font_size = 8
-text = "Caidas: "
+text = "Caidas "
 script = ExtResource("20_l6n3p")
