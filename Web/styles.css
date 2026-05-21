@@ -306,7 +306,7 @@ a:hover {
 }
 
 .features-inner video{
-  margin-bottom: 0.75rem;
+  margin: 1.5rem 0 0.75rem 0;
 } 
 /* ---------- ENEMY LIST ---------- */
 .enemy-list {
