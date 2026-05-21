@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://1dmyerdjbha" path="res://Sonidos/espada.mp3" id="17_qqcod"]
 [ext_resource type="FontFile" uid="uid://sohciwor7xii" path="res://UI/Daydream DEMO.otf" id="18_fs7ks"]
 [ext_resource type="Script" uid="uid://bdmcmuqj22107" path="res://Scripts/bajas.gd" id="18_igrcy"]
-[ext_resource type="Script" uid="uid://5a7fgm1ygaue" path="res://Scenes/caídas.gd" id="20_l6n3p"]
+[ext_resource type="Script" uid="uid://5a7fgm1ygaue" path="res://Scripts/caídas.gd" id="20_l6n3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
 atlas = ExtResource("2_8erm5")
@@ -480,7 +480,7 @@ position = Vector2(19, -1)
 shape = SubResource("CircleShape2D_tx1dd")
 disabled = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1307764219]
+[node name="Particulas_viento" type="GPUParticles2D" parent="." unique_id=1307764219]
 position = Vector2(-1, -38)
 amount = 4
 texture = ExtResource("11_gymyn")
@@ -517,15 +517,15 @@ texture_scale = 6.0
 
 [node name="sonido_caminar" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1941367660]
 stream = ExtResource("12_qqcod")
-volume_db = -5.0
+volume_db = -8.0
 
 [node name="sonido_saltar" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1365383613]
 stream = ExtResource("13_ukyrk")
-volume_db = -8.0
+volume_db = -13.0
 
 [node name="sonido_caida" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=638535830]
 stream = ExtResource("14_7dp3o")
-volume_db = -8.0
+volume_db = -12.0
 
 [node name="sonido_muerte" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1306348154]
 stream = ExtResource("15_h4iuc")

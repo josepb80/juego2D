@@ -1,5 +1,10 @@
 extends Control
 
+@onready var musica_menu = $musica_menu
+
+func _ready() -> void:
+		musica_menu.play()
+
 # =========================
 # 🎮 BOTÓN JUGAR
 # =========================

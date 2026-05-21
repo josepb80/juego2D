@@ -6,6 +6,7 @@ extends CharacterBody2D
 # =========================
 @export var speed = 50
 var direction = -1
+@onready var sonido_seta = $sonidoSeta
 
 # =========================
 # ☠️ ESTADO GENERAL
@@ -128,7 +129,8 @@ func take_damage(damage):
 func die():
 	dead = true
 	velocity = Vector2.ZERO
-
+	sonido_seta.stop()
+	
 	print("Enemigo muerto")
 
 	# 📢 AVISO AL GLOBAL: Emitimos la señal antes de destruir al enemigo

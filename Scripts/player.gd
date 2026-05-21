@@ -18,12 +18,12 @@ const JUMP_VELOCITY = -300
 # =================
 # SONIDOS
 # =================
-@onready var footsteps = $sonido_caminar
-@onready var sonido_saltar = $sonido_saltar
-@onready var sonido_caida = $sonido_caida
-@onready var sonido_muerte = $sonido_muerte
-@onready var sonido_daño = $sonido_daño
-@onready var sonido_espada = $sonido_espada
+@onready var footsteps = $Sonidos/sonido_caminar
+@onready var sonido_saltar = $Sonidos/sonido_saltar
+@onready var sonido_caida = $Sonidos/sonido_caida
+@onready var sonido_muerte = $Sonidos/sonido_muerte
+@onready var sonido_daño = $Sonidos/sonido_daño
+@onready var sonido_espada = $Sonidos/sonido_espada
 
 # =========================
 # VARIABLES

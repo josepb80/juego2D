@@ -61,6 +61,8 @@
 [ext_resource type="Texture2D" uid="uid://xg0jh3v82it1" path="res://Sprites/Fire/Red Fire/Fire28.png" id="59_o6yls"]
 [ext_resource type="Texture2D" uid="uid://dxthuhtnutk0x" path="res://Sprites/Fire/Red Fire/Fire29.png" id="60_n7tfx"]
 [ext_resource type="Texture2D" uid="uid://cf4m15y8wyd1x" path="res://Sprites/Fire/Red Fire/Fire30.png" id="61_ok655"]
+[ext_resource type="AudioStream" uid="uid://b7scghn2ocwbc" path="res://Sonidos/fuego.mp3" id="62_106pi"]
+[ext_resource type="AudioStream" uid="uid://d1bdxkmohjcip" path="res://Sonidos/fuego_avivando.mp3" id="63_w6754"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ymto1"]
 animations = [{
@@ -270,6 +272,52 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_w6754"]
+offsets = PackedFloat32Array(0, 0.6557377, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.88047904, 0.37705123, 4.797294e-07, 1, 0.80784315, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3hn3k"]
+gradient = SubResource("Gradient_w6754")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gix8j"]
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 400.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_3hn3k")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -19.999998
+turbulence_initial_displacement_max = 20.000002
+
+[sub_resource type="Gradient" id="Gradient_gix8j"]
+offsets = PackedFloat32Array(0, 0.6229508, 1)
+colors = PackedColorArray(0, 0.95686275, 1, 1, 0.12156863, 0.67058825, 1, 1, 0.2818311, 0.2857448, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvliq"]
+gradient = SubResource("Gradient_gix8j")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxd3u"]
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 400.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_wvliq")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -19.999998
+turbulence_initial_displacement_max = 20.000002
+
 [node name="Checkpoint" type="Area2D" unique_id=1428200180]
 collision_layer = 0
 script = ExtResource("1_aqfe5")
@@ -296,5 +344,27 @@ color = Color(0.6055576, 0.8632831, 0.9935754, 1)
 energy = 0.3
 texture = SubResource("GradientTexture2D_106pi")
 texture_scale = 2.0
+
+[node name="Sonido fuego" type="AudioStreamPlayer2D" parent="." unique_id=1101327789]
+stream = ExtResource("62_106pi")
+autoplay = true
+max_distance = 500.0
+parameters/looping = true
+
+[node name="Sonido avivandose" type="AudioStreamPlayer2D" parent="." unique_id=898237807]
+stream = ExtResource("63_w6754")
+volume_db = -10.0
+max_distance = 500.0
+parameters/looping = true
+
+[node name="Particulas_naranja" type="GPUParticles2D" parent="." unique_id=510744213]
+position = Vector2(0, 8)
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_gix8j")
+
+[node name="Particulas_azul" type="GPUParticles2D" parent="." unique_id=438634567]
+position = Vector2(0, 8)
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lxd3u")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

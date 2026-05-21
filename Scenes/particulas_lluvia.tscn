@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyykrmas038ft"]
+
+[sub_resource type="Gradient" id="Gradient_x1rgx"]
+offsets = PackedFloat32Array(0, 0.6803279, 1)
+colors = PackedColorArray(0.33301744, 0.5375332, 1, 1, 0.62582874, 0.749311, 1, 1, 0.627451, 0.7490196, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hj4i6"]
+gradient = SubResource("Gradient_x1rgx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x1rgx"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(200, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 130, 0)
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_hj4i6")
+
+[node name="Lluvia" type="GPUParticles2D" unique_id=1717217468]
+position = Vector2(579, 268)
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_x1rgx")

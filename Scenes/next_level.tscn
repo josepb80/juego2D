@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drxasnnvgsorq" path="res://Scripts/next_level.gd" id="1_1piei"]
 [ext_resource type="Texture2D" uid="uid://dllecufvdb0jt" path="res://Sprites/Fire/Red Fire/Fire1.png" id="32_hrfch"]
+[ext_resource type="AudioStream" uid="uid://b7scghn2ocwbc" path="res://Sonidos/fuego.mp3" id="32_k1tjj"]
 [ext_resource type="Texture2D" uid="uid://bai2uiqvonw0n" path="res://Sprites/Fire/Red Fire/Fire2.png" id="33_m38mj"]
 [ext_resource type="Texture2D" uid="uid://dbjvyo8newuvn" path="res://Sprites/Fire/Red Fire/Fire3.png" id="34_ojpp8"]
 [ext_resource type="Texture2D" uid="uid://vlcfl6eo0e8r" path="res://Sprites/Fire/Red Fire/Fire4.png" id="35_da23k"]
@@ -145,6 +146,29 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_k1tjj"]
+offsets = PackedFloat32Array(0, 0.6557377, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.88047904, 0.37705123, 4.797294e-07, 1, 0.80784315, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k1tjj"]
+gradient = SubResource("Gradient_k1tjj")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k1tjj"]
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 400.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_k1tjj")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -19.999998
+turbulence_initial_displacement_max = 20.000002
+
 [node name="Next Level" type="Area2D" unique_id=651418565]
 script = ExtResource("1_1piei")
 
@@ -166,5 +190,16 @@ color = Color(1, 0.6156863, 0.21960784, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_up6xc")
 texture_scale = 7.0
+
+[node name="Sonido fuego" type="AudioStreamPlayer2D" parent="." unique_id=1516701422]
+stream = ExtResource("32_k1tjj")
+autoplay = true
+max_distance = 500.0
+parameters/looping = true
+
+[node name="Particulas_fuego" type="GPUParticles2D" parent="." unique_id=528883181]
+position = Vector2(0, -17)
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_k1tjj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

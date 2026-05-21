@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cxfujo4iyjd43"]
+
+[ext_resource type="Texture2D" uid="uid://cxthdyqyyq5pr" path="res://Sprites/Map/Texture/luciernaga.PNG" id="1_ltnum"]
+
+[sub_resource type="Gradient" id="Gradient_0s517"]
+colors = PackedColorArray(0, 1, 0, 1, 0.94509804, 0.5254902, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ltnum"]
+gradient = SubResource("Gradient_0s517")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0m3qt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 360, 1)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 0.99999774
+scale_min = 0.099999994
+scale_max = 0.79999995
+color_ramp = SubResource("GradientTexture1D_ltnum")
+turbulence_enabled = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1468372749]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(573, 322)
+amount = 300
+texture = ExtResource("1_ltnum")
+lifetime = 50.0
+process_material = SubResource("ParticleProcessMaterial_0m3qt")

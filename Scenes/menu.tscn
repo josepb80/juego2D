@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://n5f7j87m3nbi" path="res://Scripts/menu.gd" id="1_cayip"]
 [ext_resource type="Texture2D" uid="uid://d10l5hw5ic6pd" path="res://Sprites/Map/background/background_layer_1.png" id="1_xhh6f"]
 [ext_resource type="FontFile" uid="uid://sohciwor7xii" path="res://UI/Daydream DEMO.otf" id="2_cayip"]
+[ext_resource type="AudioStream" uid="uid://ujnmb51vcu4x" path="res://Sonidos/musica_menu.mp3" id="4_158mb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
 texture = ExtResource("1_xhh6f")
@@ -135,6 +136,11 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_cayip")
 theme_override_font_sizes/font_size = 65
 text = "PLATFORM  JUMPING"
+
+[node name="musica_menu" type="AudioStreamPlayer2D" parent="." unique_id=1744911917]
+position = Vector2(589, 346)
+stream = ExtResource("4_158mb")
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
